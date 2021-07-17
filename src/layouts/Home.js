@@ -23,8 +23,21 @@ import PP from '../asstes/person.png'
 import HERO from '../asstes/hero.png'
 
 const Home = () => {
+  const fullref = React.useRef()
+  const [navigate, setNavigate] = React.useState(false)
+
+  React.useEffect(() => {
+    document.addEventListener('scroll', function (e) {
+      let offsetTop = fullref.current.getBoundingClientRect().top
+      if (offsetTop < -2000) {
+        setNavigate(true)
+      } else {
+        setNavigate(false)
+      }
+    })
+  }, [])
   return (
-    <>
+    <div ref={fullref}>
       <NavigationBar />
       <Grid container spacing={0} justify="center" className="home-container">
         <Grid
@@ -35,6 +48,7 @@ const Home = () => {
           className="hero-container"
           spacing={4}
           alignItems="center"
+          id="home"
         >
           <Box className="hero-div">
             <Box className="left">
@@ -57,6 +71,7 @@ const Home = () => {
           className="about-container"
           spacing={4}
           alignItems="center"
+          id="about"
         >
           <Grid item md={12} xs={12}>
             <AddTitle title="Sobre nós" />
@@ -89,6 +104,7 @@ const Home = () => {
           className="service-container"
           spacing={3}
           alignItems="center"
+          id="service"
         >
           <Grid item md={12} xs={12}>
             <AddTitle
@@ -141,6 +157,7 @@ const Home = () => {
           xs={12}
           className="portfolio-container"
           spacing={3}
+          id="portfolio"
         >
           <Grid item md={12} xs={12}>
             <AddTitle title="PORTFOLIO" subTitle="Meus trabalhos" />
@@ -192,6 +209,7 @@ const Home = () => {
           xs={12}
           spacing={4}
           className="contact-container"
+          id="contact"
         >
           <Grid item md={12} xs={12}>
             <AddTitle title="Contato" subTitle="Envie sua mensagem" />
@@ -220,7 +238,7 @@ const Home = () => {
         </Grid>
         <img src={BG1} className="bg-image" />
       </Grid>
-    </>
+    </div>
   )
 }
 

@@ -12,7 +12,6 @@
     margin-bottom: 150px;
   }
   .hero-container {
-    padding-top: 50px !important;
     margin-top: 30px;
     .hero-div {
       display: flex;
@@ -242,7 +241,10 @@
 @media only screen and (max-width: 968px) {
   .home-container {
     padding: 10px !important;
+    top: 70px !important;
     .hero-container {
+      margin-top: 10px;
+      padding-top: 10px;
       .hero-div {
         .left {
           padding-left: 20px;
